@@ -1,0 +1,47 @@
+[gd_scene load_steps=8 format=3 uid="uid://deof1ycfux4pd"]
+
+[ext_resource type="PackedScene" uid="uid://dd8yqb76pt66d" path="res://Scenes/level.tscn" id="1_xkc3w"]
+[ext_resource type="PackedScene" uid="uid://ohq0afmk7ev7" path="res://Scenes/ui.tscn" id="2_syiua"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_i0rdr"]
+
+[sub_resource type="Sky" id="Sky_iglx2"]
+sky_material = SubResource("ProceduralSkyMaterial_i0rdr")
+
+[sub_resource type="Environment" id="Environment_a0tpc"]
+background_mode = 2
+background_energy_multiplier = 5.45
+sky = SubResource("Sky_iglx2")
+ambient_light_source = 3
+ambient_light_color = Color(1, 1, 1, 1)
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_q8jhm"]
+dof_blur_far_transition = 1.0
+
+[sub_resource type="Compositor" id="Compositor_6abyf"]
+
+[node name="Game" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 10, 0)
+current = true
+size = 15.0
+
+[node name="Level" parent="." instance=ExtResource("1_xkc3w")]
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.0871558, 0.996195, 0, -0.996195, 0.0871558, 1.40034, 12.1875, -0.214963)
+light_angular_distance = 22.5
+light_bake_mode = 1
+shadow_opacity = 0.73
+shadow_blur = 2.0
+directional_shadow_mode = 0
+
+[node name="UI" parent="." instance=ExtResource("2_syiua")]
+z_index = 100
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_a0tpc")
+camera_attributes = SubResource("CameraAttributesPractical_q8jhm")
+compositor = SubResource("Compositor_6abyf")

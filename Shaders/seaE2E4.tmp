@@ -1,0 +1,142 @@
+[gd_resource type="ShaderMaterial" load_steps=14 format=3 uid="uid://be6vor2okg6gj"]
+
+[ext_resource type="Texture2D" uid="uid://bhb1fh80rpjno" path="res://Textures/Other/water.png" id="1_vrxer"]
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_v74df"]
+operator = 2
+
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_njfo5"]
+default_input_values = [0, Vector2(0, 0), 1, Vector2(0, 0)]
+op_type = 0
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_uod2w"]
+output_port_for_preview = 0
+texture = ExtResource("1_vrxer")
+texture_type = 1
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_wtxfc"]
+input_name = "time"
+
+[sub_resource type="VisualShaderNodeFloatFunc" id="VisualShaderNodeFloatFunc_ro321"]
+function = 0
+
+[sub_resource type="VisualShaderNodeBooleanParameter" id="VisualShaderNodeBooleanParameter_35en2"]
+parameter_name = "PingPong"
+
+[sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_2j2js"]
+input_name = "uv"
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_al6jr"]
+parameter_name = "ScaleUV"
+default_value_enabled = true
+default_value = 1.0
+
+[sub_resource type="VisualShaderNodeFloatParameter" id="VisualShaderNodeFloatParameter_5db7n"]
+parameter_name = "SpeedModifier"
+hint = 1
+min = -2.0
+max = 2.0
+default_value_enabled = true
+default_value = 1.0
+
+[sub_resource type="VisualShaderNodeSwitch" id="VisualShaderNodeSwitch_6goyo"]
+
+[sub_resource type="VisualShaderNodeVectorOp" id="VisualShaderNodeVectorOp_2n27p"]
+default_input_values = [0, Vector2(0, 0), 1, Vector2(0, 0)]
+op_type = 0
+operator = 2
+
+[sub_resource type="VisualShader" id="VisualShader_fvxwh"]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_back, diffuse_lambert, specular_schlick_ggx;
+
+uniform float ScaleUV = 1;
+uniform bool PingPong;
+uniform float SpeedModifier : hint_range(-2, 2) = 1;
+uniform sampler2D tex_frg_12 : source_color;
+
+
+
+void fragment() {
+// Input:5
+	vec2 n_out5p0 = UV;
+
+
+// FloatParameter:6
+	float n_out6p0 = ScaleUV;
+
+
+// VectorOp:9
+	vec2 n_out9p0 = n_out5p0 * vec2(n_out6p0);
+
+
+// BooleanParameter:4
+	bool n_out4p0 = PingPong;
+
+
+// Input:2
+	float n_out2p0 = TIME;
+
+
+// FloatFunc:3
+	float n_out3p0 = sin(n_out2p0);
+
+
+	float n_out8p0;
+// Switch:8
+	n_out8p0 = mix(n_out2p0, n_out3p0, float(n_out4p0));
+
+
+// FloatParameter:7
+	float n_out7p0 = SpeedModifier;
+
+
+// FloatOp:10
+	float n_out10p0 = n_out8p0 * n_out7p0;
+
+
+// VectorOp:11
+	vec2 n_out11p0 = n_out9p0 + vec2(n_out10p0);
+
+
+// Texture2D:12
+	vec4 n_out12p0 = texture(tex_frg_12, n_out11p0);
+
+
+// Output:0
+	ALBEDO = vec3(n_out12p0.xyz);
+
+
+}
+"
+nodes/fragment/0/position = Vector2(1580, 40)
+nodes/fragment/2/node = SubResource("VisualShaderNodeInput_wtxfc")
+nodes/fragment/2/position = Vector2(-160, 500)
+nodes/fragment/3/node = SubResource("VisualShaderNodeFloatFunc_ro321")
+nodes/fragment/3/position = Vector2(180, 420)
+nodes/fragment/4/node = SubResource("VisualShaderNodeBooleanParameter_35en2")
+nodes/fragment/4/position = Vector2(-40, 220)
+nodes/fragment/5/node = SubResource("VisualShaderNodeInput_2j2js")
+nodes/fragment/5/position = Vector2(280, 40)
+nodes/fragment/6/node = SubResource("VisualShaderNodeFloatParameter_al6jr")
+nodes/fragment/6/position = Vector2(420, 160)
+nodes/fragment/7/node = SubResource("VisualShaderNodeFloatParameter_5db7n")
+nodes/fragment/7/position = Vector2(140, 600)
+nodes/fragment/8/node = SubResource("VisualShaderNodeSwitch_6goyo")
+nodes/fragment/8/position = Vector2(480, 400)
+nodes/fragment/9/node = SubResource("VisualShaderNodeVectorOp_2n27p")
+nodes/fragment/9/position = Vector2(760, 80)
+nodes/fragment/10/node = SubResource("VisualShaderNodeFloatOp_v74df")
+nodes/fragment/10/position = Vector2(760, 460)
+nodes/fragment/11/node = SubResource("VisualShaderNodeVectorOp_njfo5")
+nodes/fragment/11/position = Vector2(960, 240)
+nodes/fragment/12/node = SubResource("VisualShaderNodeTexture_uod2w")
+nodes/fragment/12/position = Vector2(1160, 80)
+nodes/fragment/connections = PackedInt32Array(2, 0, 3, 0, 2, 0, 8, 2, 3, 0, 8, 1, 4, 0, 8, 0, 7, 0, 10, 1, 8, 0, 10, 0, 11, 0, 12, 0, 9, 0, 11, 0, 10, 0, 11, 1, 6, 0, 9, 1, 5, 0, 9, 0, 12, 0, 0, 0)
+
+[resource]
+render_priority = 0
+shader = SubResource("VisualShader_fvxwh")
+shader_parameter/ScaleUV = 20.0
+shader_parameter/PingPong = null
+shader_parameter/SpeedModifier = 0.1

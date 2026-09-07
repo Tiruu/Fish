@@ -1,0 +1,120 @@
+[gd_scene load_steps=14 format=3 uid="uid://u1t5hu25arff"]
+
+[ext_resource type="Script" path="res://Scripts/rod.gd" id="1_o2drm"]
+[ext_resource type="AudioStream" uid="uid://j5744088qguh" path="res://Audio/bait_in.mp3" id="2_phd2d"]
+[ext_resource type="AudioStream" uid="uid://po8ebbude3qe" path="res://Audio/bait_out.mp3" id="3_4auaj"]
+[ext_resource type="AudioStream" uid="uid://bl15aw5rllawh" path="res://Audio/fish_touch.mp3" id="4_7sjkj"]
+[ext_resource type="AudioStream" uid="uid://ch6jgjlpsh73p" path="res://Audio/fish_caught.mp3" id="5_vuxdk"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_242wj"]
+albedo_color = Color(0.924705, 0, 0.23613, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_5h6b8"]
+material = SubResource("StandardMaterial3D_242wj")
+radius = 0.2
+height = 0.5
+radial_segments = 8
+rings = 4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ckq66"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_lavxx"]
+material = SubResource("StandardMaterial3D_ckq66")
+size = Vector3(0.04, 10, 0.04)
+
+[sub_resource type="Animation" id="Animation_x85si"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BaitSpot/Bait:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ajm4a"]
+resource_name = "floater_away"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BaitSpot/Bait:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.1, 0), Vector3(0, 10, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ab4ee"]
+resource_name = "floater_bobbing"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("BaitSpot/Bait:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 1.2, 1.4, 1.6, 1.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 10, 0), Vector3(0, -0.5, 0), Vector3(0, 0.3, 0), Vector3(0, -0.2, 0), Vector3(0, 0.1, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kp4ye"]
+_data = {
+"RESET": SubResource("Animation_x85si"),
+"floater_away": SubResource("Animation_ajm4a"),
+"floater_bobbing": SubResource("Animation_ab4ee")
+}
+
+[node name="Rod" type="Node3D" node_paths=PackedStringArray("bait_spot")]
+script = ExtResource("1_o2drm")
+bait_spot = NodePath("BaitSpot")
+
+[node name="BaitSpot" type="Marker3D" parent="."]
+visible = false
+
+[node name="Bait" type="MeshInstance3D" parent="BaitSpot"]
+transform = Transform3D(0.999988, -0.00417184, 0.00268491, 0.00418612, 0.999977, -0.00534328, -0.0026626, 0.00535442, 0.999982, 0, 0, 0)
+mesh = SubResource("SphereMesh_5h6b8")
+
+[node name="Line" type="MeshInstance3D" parent="BaitSpot/Bait"]
+transform = Transform3D(-0.999987, 0.00418614, 0.00266247, 0.00417182, 0.999977, -0.00535445, -0.00268486, -0.00534325, -0.999982, 0.0212017, 5.06462, -0.0270621)
+mesh = SubResource("BoxMesh_lavxx")
+skeleton = NodePath("../..")
+
+[node name="BaitIn" type="AudioStreamPlayer" parent="BaitSpot/Bait"]
+unique_name_in_owner = true
+stream = ExtResource("2_phd2d")
+volume_db = 1.0
+
+[node name="BaitOut" type="AudioStreamPlayer" parent="BaitSpot/Bait"]
+unique_name_in_owner = true
+stream = ExtResource("3_4auaj")
+volume_db = 1.0
+
+[node name="FishTouch" type="AudioStreamPlayer" parent="BaitSpot/Bait"]
+unique_name_in_owner = true
+stream = ExtResource("4_7sjkj")
+volume_db = 1.0
+
+[node name="FishCaught" type="AudioStreamPlayer" parent="BaitSpot/Bait"]
+unique_name_in_owner = true
+stream = ExtResource("5_vuxdk")
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+collision_mask = 9
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_kp4ye")
+}
+speed_scale = 3.0

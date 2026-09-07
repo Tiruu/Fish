@@ -1,0 +1,81 @@
+[gd_scene load_steps=6 format=3 uid="uid://dwyc7thewr6sx"]
+
+[ext_resource type="Texture2D" uid="uid://bce8gso88ybd1" path="res://Textures/Other/bookbutton.png" id="1_k25c5"]
+[ext_resource type="FontFile" uid="uid://c3cmuhtryr7tp" path="res://Font/alagard.ttf" id="2_tch8u"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_kegmn"]
+resource_local_to_scene = true
+font = ExtResource("2_tch8u")
+font_size = 40
+font_color = Color(0.176471, 0.176471, 0.176471, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_j1cns"]
+resource_local_to_scene = true
+font = ExtResource("2_tch8u")
+font_size = 25
+font_color = Color(0.176471, 0.176471, 0.176471, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_4ei3g"]
+resource_local_to_scene = true
+font = ExtResource("2_tch8u")
+font_size = 25
+font_color = Color(0.176471, 0.176471, 0.176471, 1)
+
+[node name="AchievementButton" type="TextureRect"]
+z_index = -1
+texture_filter = 1
+custom_minimum_size = Vector2(640, 100)
+offset_right = 640.0
+offset_bottom = 100.0
+size_flags_horizontal = 3
+texture = ExtResource("1_k25c5")
+
+[node name="Label" type="Label" parent="."]
+z_index = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 31.0
+offset_top = 20.0
+offset_right = -30.0
+offset_bottom = -42.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Fishing Expert"
+label_settings = SubResource("LabelSettings_kegmn")
+autowrap_mode = 2
+
+[node name="Label3" type="Label" parent="."]
+visible = false
+z_index = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 39.0
+offset_top = 25.0
+offset_right = -22.0
+offset_bottom = -37.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "+ 15% XP"
+label_settings = SubResource("LabelSettings_j1cns")
+horizontal_alignment = 2
+autowrap_mode = 2
+
+[node name="Label2" type="Label" parent="."]
+z_index = 2
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 30.0
+offset_top = 61.0
+offset_right = -31.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Fish a 100 fishes"
+label_settings = SubResource("LabelSettings_4ei3g")
+autowrap_mode = 2

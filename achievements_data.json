@@ -1,0 +1,47 @@
+{
+	"1": {
+		"title": "Fishing Amateur",
+		"description": "Catch a total of 100 fish",
+		"hidden": false,
+	},
+	"2": {
+		"title": "Fishing Enjoyer",
+		"description": "Catch a total of 200 fish",
+		"hidden": false,
+	},
+	"3": {
+		"title": "Fishing Expert",
+		"description": "Catch a total of 500 fish",
+		"hidden": false,
+	},
+	"4": {
+		"title": "Just, How???",
+		"description": "Catch a total of 1000 fish",
+		"hidden": true,
+	},
+	"5": {
+		"title": "Sussy Fishy",
+		"description": "Catch an Amungos",
+		"hidden": true,
+	},
+	"6": {
+		"title": "So long, Fish Bowser",
+		"description": "Catch a Long Mec",
+		"hidden": true,
+	},
+	"7": {
+		"title": "Biodiversity Hunter",
+		"description": "Catch one of every fish (except secrets)",
+		"hidden": false,
+	},
+	"8": {
+		"title": "Go make a car with that",
+		"description": "Catch at least 4 Car Tires",
+		"hidden": false,
+	},
+	"9": {
+		"title": "Expert pizza destroyer",
+		"description": "Catch at least 100 Anchovys",
+		"hidden": false,
+	},
+}

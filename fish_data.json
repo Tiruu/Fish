@@ -1,0 +1,93 @@
+{
+	"1": {
+		"name": "Atlantic Cod",
+		"habitat": "Ocean",
+		"fact": "This fish is not a game from one of Activision's world-famous licenses. \n\nI swear!",
+		"min_size": 30.0,
+		"max_size": 110.0
+	},
+	"2": {
+		"name": "Channel Catfish",
+		"habitat": "River",
+		"fact": "This fish is not a feline in disguise. \n\nIt won't meow, but it might still fool you online.",
+		"min_size": 20.0,
+		"max_size": 120.0
+	},
+	"3": {
+		"name": "Long Mec",
+		"habitat": "Unknown",
+		"fact": "This guy is as long as a Monday. \n\n\"Frerot, t'es bad long sa mere\"",
+		"min_size": 400,
+		"max_size": 400,
+	},
+	"4": {
+		"name": "Yellowfin Tuna",
+		"habitat": "Ocean",
+		"fact": "It's fast, it's strong, and it's probably in your sandwich right now.",
+		"min_size": 110.0,
+		"max_size": 210.0
+	},
+	"5": {
+		"name": "European Carp",
+		"habitat": "River",
+		"fact": "Famous for appearing in ancient myths, modern fishing tales, and every pond that says \"No Fishing.\"",
+		"min_size": 40.0,
+		"max_size": 80.0
+	},
+	"6": {
+		"name": "European Anchovy",
+		"habitat": "Ocean",
+		"fact": "This tiny fish has caused more pizza-related arguments than any other seafood in history.",
+		"min_size": 5.0,
+		"max_size": 20.0
+	},
+	"7": {
+		"name": "Car Tire",
+		"habitat": "Anywhere",
+		"fact": "It may seem tire-some, but it really keeps things rolling in life!",
+		"min_size": 50,
+		"max_size": 50
+	},
+	"8": {
+		"name": "Mungus",
+		"habitat": "Space",
+		"fact": "You'll never know if it’s on your side, but it definitely doesn't want to be caught. \n\nKinda sus in my opinion",
+		"min_size": 150,
+		"max_size": 150,
+	},
+	"9": {
+		"name": "Rainbow Trout",
+		"habitat": "River",
+		"fact": "Somewhere over the rainbow... you'll find this fish dodging your hook.",
+		"min_size": 50,
+		"max_size": 75,
+	},
+	"10": {
+		"name": "Lake Sturgeon",
+		"habitat": "River",
+		"fact": "It's been around for centuries, so don't be surprised if it rolls its eyes at your fishing skills.",
+		"min_size": 90,
+		"max_size": 180,
+	},
+	"11": {
+		"name": "Sockeye Salmon",
+		"habitat": "River",
+		"fact": "Spends its whole life swimming upstream… talk about going against the flow!",
+		"min_size": 60,
+		"max_size": 85,
+	},
+	"12": {
+		"name": "Largemouth Bass",
+		"habitat": "River",
+		"fact": "The only fish that could probably out-eat you at an all-you-can-eat buffet.",
+		"min_size": 40,
+		"max_size": 75,
+	},
+	"13": {
+		"name": "Mystic Carp",
+		"habitat": "Anywhere possible",
+		"fact": "Destined for glory! \n\n…Eventually. \n\nProbably. \n\nMaybe.",
+		"min_size": 50,
+		"max_size": 120,
+	},
+}

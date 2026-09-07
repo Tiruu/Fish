@@ -1,0 +1,47 @@
+[gd_scene load_steps=4 format=3 uid="uid://2tkhgk1xate"]
+
+[ext_resource type="Texture2D" uid="uid://bce8gso88ybd1" path="res://Textures/Other/bookbutton.png" id="1_vrfd0"]
+[ext_resource type="FontFile" uid="uid://c3cmuhtryr7tp" path="res://Font/alagard.ttf" id="2_8fx13"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_kegmn"]
+font = ExtResource("2_8fx13")
+font_size = 40
+font_color = Color(0.176471, 0.176471, 0.176471, 1)
+
+[node name="DetailButton" type="Button"]
+z_index = -1
+texture_filter = 1
+custom_minimum_size = Vector2(300, 100)
+offset_right = 300.0
+offset_bottom = 100.0
+size_flags_horizontal = 3
+text = "Empty"
+flat = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_vrfd0")
+
+[node name="Label" type="Label" parent="."]
+z_index = 2
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 25.0
+offset_top = 3.0
+offset_right = -25.0
+offset_bottom = 3.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Largemouth Bass"
+label_settings = SubResource("LabelSettings_kegmn")
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2

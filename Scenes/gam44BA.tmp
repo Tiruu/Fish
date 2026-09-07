@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://deof1ycfux4pd"]
+
+[ext_resource type="PackedScene" uid="uid://dd8yqb76pt66d" path="res://Scenes/level.tscn" id="1_xkc3w"]
+[ext_resource type="PackedScene" uid="uid://ohq0afmk7ev7" path="res://Scenes/ui.tscn" id="2_syiua"]
+[ext_resource type="AudioStream" uid="uid://cek1p6at0tdrc" path="res://Audio/water.mp3" id="3_w4qjs"]
+
+[node name="Game" type="Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="."]
+unique_name_in_owner = true
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 10, 0)
+current = true
+size = 15.0
+
+[node name="Level" parent="." instance=ExtResource("1_xkc3w")]
+
+[node name="Sun" type="DirectionalLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.0871558, 0.996195, 0, -0.996195, 0.0871558, 1.40034, 12.1875, -0.214963)
+light_angular_distance = 22.5
+light_bake_mode = 1
+shadow_opacity = 0.73
+shadow_blur = 2.0
+directional_shadow_mode = 0
+
+[node name="AudioListener3D" type="AudioListener3D" parent="."]
+
+[node name="Water" type="AudioStreamPlayer" parent="AudioListener3D"]
+stream = ExtResource("3_w4qjs")
+autoplay = true
+parameters/looping = true
+
+[node name="UI" parent="." instance=ExtResource("2_syiua")]
+z_index = 100
