@@ -8,6 +8,8 @@ The project started as a simple fishing game and grew around a collection/achiev
 > **Engine:** Godot 4.3  
 > **Platforms:** Android and Web
 
+![Fish gameplay](docs/screenshots/fish-ss-1.png)
+
 ## Gameplay
 
 The core loop is intentionally simple:
@@ -20,6 +22,12 @@ The core loop is intentionally simple:
 - Keep player progress between sessions.
 
 The game stores static fish and achievement definitions in JSON and saves player progress locally.
+
+## Screenshots
+
+![Fishing gameplay](docs/screenshots/fish-ss-2.png)
+
+![Fish encyclopedia](docs/screenshots/fish-ss-3.png)
 
 ## Technical highlights
 
@@ -41,9 +49,9 @@ The main scene is `Scenes/game.tscn`. Global game state and persistence are hand
 .
 ├── Scenes/              # Game and UI scenes
 ├── Scripts/             # Gameplay and systems
-├── Textures/             # Visual assets
-├── Sounds/               # Audio assets
-├── fish_data.json        # Static fish information
+├── Textures/            # Visual assets
+├── Audio/               # Audio assets
+├── fish_data.json       # Static fish information
 ├── achievements_data.json
 ├── project.godot
 └── export_presets.cfg
